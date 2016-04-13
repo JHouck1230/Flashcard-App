@@ -10,7 +10,6 @@ app.controller('editCtrl', function($scope, TriviaFactory) {
   function populateCards(){
     $scope.creating = false;
     var data = TriviaFactory.grabData();
-    console.log('grabbed data: ', data);
     $scope.flashcards = data;
   };
 
@@ -55,7 +54,6 @@ app.controller('editCtrl', function($scope, TriviaFactory) {
         }, function(err) {
           console.error('err: ', err);
         })
-      console.log('crated');
     } // end createCard
 
   $scope.removeCard = function(flashcard) {
@@ -64,7 +62,6 @@ app.controller('editCtrl', function($scope, TriviaFactory) {
         .then(function(res) {
 
           var index = $scope.flashcards.indexOf(flashcard);
-          console.log("index", index);
           $scope.flashcards.splice(index, 1);
 
         }, function(err) {
@@ -76,7 +73,6 @@ app.controller('editCtrl', function($scope, TriviaFactory) {
 
   $scope.editCard = function(flashcard) {
     flashcard.editing = true;
-    console.log("flashcard edit", flashcard);
   }; //end editCard
 
 
@@ -86,7 +82,6 @@ app.controller('editCtrl', function($scope, TriviaFactory) {
       console.log("flashcard save", flashcard);
       TriviaFactory.update(flashcard)
         .then(function(res) {
-          console.log('res: ', res);
 
         }, function(err) {
           console.error('err: ', err);
@@ -110,7 +105,6 @@ $scope.filterCategory = function(category) {
   $scope.showCard = true;
   $scope.showAnswer = false;
   $scope.flipped = false;
-  console.log('category req ', category);
   TriviaFactory.getCategory(category)
   .then(function(res){
 
@@ -145,5 +139,4 @@ $scope.revealCard = function(){
 }
 
 $scope.flashcards = TriviaFactory.grabData();
-  console.log("$scope.flashcards play view", $scope.flashcards);
 }); //end playCtrl

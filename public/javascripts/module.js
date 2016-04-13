@@ -19,7 +19,6 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 app.run(function(TriviaFactory) {
   TriviaFactory.get();
-  console.log('got em');
 });
 
 app.filter('unique', function() {
