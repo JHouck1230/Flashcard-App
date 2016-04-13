@@ -82,13 +82,16 @@
       <div class="pure-u-1-3" ng-repeat="flashcard in flashcards track by $index" ng-dblclick='editCard(flashcard)'>
         <div class="card">
 
-          <div class="cardRemove" ng-click="removeCard(flashcard)">
+          <div class="cardRemove" ng-hide='flashcard.editing' ng-click="removeCard(flashcard)">
             <i class="fa fa-times" id="close"></i>
 
           </div>
           <div class="card-content">
 
             <div class="categoryCard">
+              <div class="cardPlus" ng-show="flashcard.editing" ng-click="saveCard(flashcard)">
+                <i class="fa fa-check fa-2x" id="close"></i>
+              </div>
               <div ng-hide='flashcard.editing' class="categories">
                 <h3 class="cardFont">{{flashcard.category}}</h3>
               </div>
@@ -122,9 +125,6 @@
                 <input type="text" ng-show="flashcard.editing" ng-model="flashcard.answer" maxlength="50">
               </div>
             </div>
-
-            <button ng-show="flashcard.editing" ng-click="saveCard(flashcard)">Save Edit</button>
-
           </div>
 
         </div>

@@ -28,6 +28,7 @@ app.factory('TriviaFactory', function($http) {
 
   function update(flashcard){
     var id = flashcard.id;
+    delete flashcard['editing'];
     return $http.put(`/flashcards/${id}`, flashcard);
   }
 

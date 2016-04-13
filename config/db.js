@@ -1,11 +1,12 @@
 'use strict';
 
 var mysql = require('mysql');
-var connection = mysql.createConnection("mysql://rh3i1d4i5vj3pxik:dc3nzhxjaliw4vdf@izm96dhhnwr2ieg0.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/trygkfqphk92wr3o");
+require('dotenv').config();
+var connection = mysql.createConnection(process.env.MYSQL_URL);
 var connection = mysql.createConnection(process.env.JAWSDB_URL || {
   host: 'localhost',
   user: 'root',
-  password: 'testing',
+  password: process.env.MYSQL_PASS,
   database: 'trivia'
 });
 connection.connect(function(err){
