@@ -1,0 +1,147 @@
+<div class="pure-g">
+  <div class="pure-u-1-4" id="left">
+
+    <div class="pure-menu pure-menu-horizontal">
+      <h1>Trivial Trivia</h1>
+
+      <hr>
+      <!-- <ul class="pure-menu-list">
+        <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+          <a href="#" id="menuLink1" class="pure-menu-link">Categories</a>
+          <ul class="pure-menu-children">
+            <li class="pure-menu-item children" ng-repeat="flashcard in flashcards | unique: category">
+              <a href="#" class="pure-menu-link">{{flashcard}}</a>
+            </li>
+          </ul>
+        </li>
+      </ul> -->
+      <h4>Categories</h4>
+      <div ng-repeat="flashcard in flashcards | unique: category">
+        <button>{{flashcard}}</button>
+      </div>
+    </div>
+
+
+    <div class="toggleState">
+      <button ui-sref='play'>play</button>
+    </div>
+
+  </div>
+
+  <div class="pure-u-1-4">&nbsp;</div>
+  <div class="pure-u-3-4" id="right">
+    <div class="pure-g">
+
+      <!--begin static add card-->
+      <div class="pure-u-1-3">
+        <div class="addNewCard card" ng-dblclick="addNewCard()" ng-hide="creating">
+          <i class="fa fa-plus fa-5x" id="close"></i>
+        </div>
+
+        <div class="card">
+
+          <div class="cardPlus" ng-click="createCard()">
+            <i class="fa fa-check fa-2x" id="close"></i>
+          </div>
+          <div class="card-content">
+            <div class="categoryCard">
+              <div ng-hide='flashcard.editing' class="categories">
+                <input type="text" ng-model='flashcard.category' placeholder="Category">
+              </div>
+              <div ng-show="flashcard.editing">
+                <input type="text" ng-show="flashcard.editing" ng-model="flashcard.category">
+              </div>
+            </div>
+            <div class="questionCard">
+              <div ng-hide='flashcard.editing' class="categories">
+                <span><i class="fa fa-question-circle fa-2x"></i></span>
+                <input type="text" ng-model='flashcard.question' placeholder="Question">
+              </div>
+              <div ng-show="flashcard.editing">
+                <input type="text" ng-show="flashcard.editing" ng-model="flashcard.question">
+              </div>
+            </div>
+            <div class="answerCard">
+              <div ng-hide='flashcard.editing' class="categories">
+                <span><i class="fa fa-quote-left fa-2x"></i> <i class="fa fa-quote-right fa-2x"></i></span>
+                <span>
+                  <input type="text" ng-model='flashcard.answer' placeholder="Answer">
+                </span>
+              </div>
+              <div ng-show="flashcard.editing">
+                <input type="text" ng-show="flashcard.editing" ng-model="flashcard.answer">
+              </div>
+            </div>
+            <button ng-show="flashcard.editing" ng-click="saveCard(flashcard)">Save Edit</button>
+          </div>
+        </div>
+      </div>
+      <!--end static add card-->
+
+      <!-- begin card duplication-->
+      <div class="pure-u-1-3" ng-repeat="flashcard in flashcards track by $index" ng-dblclick='editCard(flashcard)'>
+        <div class="card">
+
+          <div class="cardRemove" ng-click="removeCard(flashcard)">
+            <i class="fa fa-times" id="close"></i>
+
+          </div>
+          <div class="card-content">
+
+            <div class="categoryCard">
+              <div ng-hide='flashcard.editing' class="categories">
+                <h3 class="cardFont">{{flashcard.category}}</h3>
+              </div>
+              <div ng-show="flashcard.editing">
+                <input type="text" ng-show="flashcard.editing" maxlength="20" ng-model="flashcard.category">
+              </div>
+            </div>
+
+            <div class="questionCard">
+              <div ng-hide='flashcard.editing' class="categories">
+                <span><i class="fa fa-question-circle fa-2x"></i></span>
+                <span class="cardFont qa">{{flashcard.question}}</span>
+              </div>
+              <div ng-show="flashcard.editing">
+
+                  <i class="fa fa-question-circle fa-2x"></i>
+                <input type="text" ng-show="flashcard.editing" ng-model="flashcard.question" maxlength="100">
+              </div>
+            </div>
+
+            <div class="answerCard">
+              <div ng-hide='flashcard.editing' class="categories">
+                <span><i class="fa fa-quote-left fa-2x"></i> <i class="fa fa-quote-right fa-2x"></i></span>
+
+                <span  class="cardFont qa">{{flashcard.answer}}</span>
+
+              </div>
+              <div ng-show="flashcard.editing">
+                <span><i class="fa fa-quote-left fa-2x"></i> <i class="fa fa-quote-right fa-2x"></i></span>
+
+                <input type="text" ng-show="flashcard.editing" ng-model="flashcard.answer" maxlength="50">
+              </div>
+            </div>
+
+            <button ng-show="flashcard.editing" ng-click="saveCard(flashcard)">Save Edit</button>
+
+          </div>
+
+        </div>
+      </div>
+      <!--end card duplication-->
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<!--
+
+
+  </div> -->
